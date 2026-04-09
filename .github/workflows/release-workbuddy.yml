@@ -62,9 +62,6 @@ jobs:
       - name: Run Smoke Rules
         run: npm run smoke:rules
 
-      - name: Generate App Icons
-        run: npm run icons:generate
-
       - name: Build Release Packages
         run: ${{ matrix.command }}
 
