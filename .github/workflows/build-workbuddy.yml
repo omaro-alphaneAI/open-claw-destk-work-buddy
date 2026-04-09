@@ -1,0 +1,90 @@
+name: Build WorkBuddy Pet
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "main.js"
+      - "preload.js"
+      - "package.json"
+      - "package-lock.json"
+      - "scripts/**"
+      - "src/**"
+      - ".github/workflows/build-workbuddy.yml"
+      - ".github/workflows/release-workbuddy.yml"
+  pull_request:
+    paths:
+      - "main.js"
+      - "preload.js"
+      - "package.json"
+      - "package-lock.json"
+      - "scripts/**"
+      - "src/**"
+      - ".github/workflows/build-workbuddy.yml"
+      - ".github/workflows/release-workbuddy.yml"
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS
+            os: macos-latest
+            command: npm run dist:mac
+            artifact_name: workbuddy-pet-macos
+            artifact_path: |
+              dist/*.dmg
+              dist/*.zip
+          - name: Windows
+            os: windows-latest
+            command: npm run dist:win
+            artifact_name: workbuddy-pet-windows
+            artifact_path: |
+              dist/*.exe
+          - name: Linux
+            os: ubuntu-latest
+            command: npm run dist:linux
+            artifact_name: workbuddy-pet-linux
+            artifact_path: |
+              dist/*.AppImage
+              dist/*.deb
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install Linux Packaging Dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools icnsutils graphicsmagick xz-utils rpm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Smoke Rules
+        run: npm run smoke:rules
+
+      - name: Generate App Icons
+        run: npm run icons:generate
+
+      - name: Build Native Packages
+        run: ${{ matrix.command }}
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.artifact_path }}
+          if-no-files-found: error

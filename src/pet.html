@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XiaoQi Pet</title>
+    <link rel="stylesheet" href="./pet.css" />
+  </head>
+  <body>
+    <main
+      class="pet-shell"
+      id="petStage"
+      data-status="idle"
+      data-eco="false"
+      data-chat-open="false"
+      data-behavior="floor-idle"
+      data-pose="idle"
+      data-facing="left"
+      data-collision="false"
+      data-render-tier="full"
+    >
+      <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+      <div class="impact-layer" id="impactLayer" aria-hidden="true"></div>
+      <div class="poop-trail" id="poopTrail" aria-hidden="true"></div>
+
+      <section class="pet-bubble is-hidden hit-region" id="petBubble" aria-live="polite">
+        <span class="pet-bubble-name" id="petBubbleName">小七</span>
+        <p class="pet-bubble-text" id="petBubbleText">我在，啥事。</p>
+      </section>
+
+      <button class="pet-button hit-region" id="petButton" type="button" aria-label="桌宠">
+        <span class="pet-aura"></span>
+        <span class="pet-shadow"></span>
+        <div class="pet-rig" id="petRig" aria-hidden="true"></div>
+      </button>
+
+      <button class="reply-dot hit-region" id="replyDot" type="button" aria-label="打开聊天" hidden></button>
+    </main>
+
+    <script src="./pet-renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "name": "xiaoqi-pet-shell",
+  "version": "0.1.0",
+  "private": true,
+  "author": "WorkBuddy Team",
+  "description": "Privacy-first cross-platform desktop pet and personal WorkBuddy",
+  "main": "main.js",
+  "scripts": {
+    "assets:cat": "python3 scripts/generate_cat_assets.py",
+    "icons:generate": "python3 scripts/generate_app_icons.py",
+    "dev": "electron .",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist:mac": "electron-builder --mac dmg zip",
+    "dist:win": "electron-builder --win nsis portable",
+    "dist:linux": "electron-builder --linux AppImage deb",
+    "desktop:install": "zsh scripts/install_desktop_artifacts.sh",
+    "send": "node scripts/send-event.js",
+    "chat:send": "node scripts/send-chat.js",
+    "nudge:send": "node scripts/send-ambient.js",
+    "reminder:send": "node scripts/send-reminder.js",
+    "context:send": "node scripts/send-context.js",
+    "smoke:rules": "node scripts/smoke-rules.js"
+  },
+  "build": {
+    "appId": "com.workbuddy.desktop.pet",
+    "productName": "WorkBuddy Pet",
+    "icon": "build/icon.png",
+    "asar": true,
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "scripts/**/*",
+      "runtime/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": "-",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "build/icons",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.8.1"
+  }
+}

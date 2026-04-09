@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XiaoQi Chat</title>
+    <link rel="stylesheet" href="./chat.css" />
+  </head>
+  <body>
+    <main class="chat-wrap">
+      <section class="chat-panel" aria-label="桌宠对话框">
+        <header class="chat-header">
+          <div class="chat-heading">
+            <span class="chat-title" id="chatTitle">小七</span>
+            <span class="chat-meta" id="chatMeta">桌宠相关进程。</span>
+          </div>
+
+          <div class="chat-header-actions">
+            <button class="icon-button no-drag" id="workbenchToggleButton" type="button" aria-label="打开工作台" hidden>台</button>
+            <button class="icon-button no-drag" id="diffToggleButton" type="button" aria-label="打开代码监视器">▣</button>
+            <button class="icon-button no-drag" id="chatCloseButton" type="button" aria-label="关闭对话">×</button>
+          </div>
+        </header>
+
+        <section class="chat-body" id="chatBody">
+          <section class="progress-shell">
+            <div class="progress-head">
+              <div class="progress-title-group">
+                <span class="progress-copy" id="progressCopy">桌宠相关进程。</span>
+                <div class="progress-meta-row">
+                  <span class="progress-phase" id="progressPhase">待命</span>
+                  <span class="progress-percent" id="progressPercent">28%</span>
+                </div>
+              </div>
+              <button class="avatar-toggle no-drag" id="avatarToggleButton" type="button">切到黑猫</button>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <span class="progress-fill" id="progressFill"></span>
+            </div>
+            <div class="progress-steps" id="progressSteps" aria-label="任务阶段"></div>
+          </section>
+
+          <section class="clone-rack" id="cloneRack" aria-label="分身猫"></section>
+
+          <section class="quick-action-shell is-hidden" id="quickActionShell" aria-label="快捷动作"></section>
+
+          <section class="ambient-shell is-hidden" id="ambientShell" aria-label="环境提示"></section>
+
+          <section class="chat-stream" id="chatStream" aria-live="polite"></section>
+        </section>
+
+        <section class="diff-shell is-hidden" id="diffShell" aria-label="代码监视器">
+          <div class="diff-head">
+            <div class="diff-copy">
+              <span class="diff-title" id="diffTitle">代码监视器</span>
+              <span class="diff-meta" id="diffMeta">这只分身最近没落新 patch。</span>
+            </div>
+            <button class="icon-button no-drag" id="diffCloseButton" type="button">×</button>
+          </div>
+
+          <div class="diff-layout">
+            <aside class="diff-index" id="diffIndex" aria-label="改动条目"></aside>
+            <div class="diff-stream" id="diffStream"></div>
+          </div>
+        </section>
+
+        <section class="workbench-shell is-hidden" id="workbenchShell" aria-label="工作台">
+          <div class="workbench-head">
+            <div class="workbench-copy">
+              <span class="workbench-title" id="workbenchTitle">工作台</span>
+              <span class="workbench-meta" id="workbenchMeta">长回复、审批和运行摘要会停在这里。</span>
+            </div>
+            <button class="icon-button no-drag" id="workbenchCloseButton" type="button" aria-label="收起工作台">←</button>
+          </div>
+
+          <div class="workbench-stream" id="workbenchStream"></div>
+        </section>
+
+        <form class="chat-form" id="chatForm">
+          <div class="chat-compose-shell">
+            <textarea
+              class="chat-input no-drag"
+              id="chatInput"
+              rows="3"
+              placeholder="直接把需求写给小七。"
+              aria-label="给桌宠发送消息"
+              enterkeyhint="send"
+            ></textarea>
+            <div class="chat-compose-bar">
+              <span class="chat-compose-hint">Enter 发送 · Shift+Enter 换行</span>
+              <button class="chat-send no-drag" id="chatSendButton" type="submit">发给小七</button>
+            </div>
+          </div>
+        </form>
+
+        <button class="chat-resize-grip no-drag" id="chatResizeGrip" type="button" aria-label="拉大缩小窗口"></button>
+      </section>
+    </main>
+
+    <script src="./chat-renderer.js"></script>
+  </body>
+</html>

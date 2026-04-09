@@ -1,0 +1,46 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 170) rotate(90) scale(110)">
+      <stop stop-color="#FFCF8C" stop-opacity="0.44"/>
+      <stop offset="0.48" stop-color="#FFCF8C" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FFCF8C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fur" x1="160" y1="60" x2="160" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6A3C15"/>
+      <stop offset="1" stop-color="#1C0D05"/>
+    </linearGradient>
+    <linearGradient id="innerEar" x1="160" y1="72" x2="160" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5A385" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#E5A385" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="eye" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 152) rotate(90) scale(34 20)">
+      <stop stop-color="#FFF3CC"/>
+      <stop offset="0.24" stop-color="#FFD86A"/>
+      <stop offset="1" stop-color="#D38821"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="160" cy="166" rx="118" ry="104" fill="url(#glow)"/>
+  <ellipse cx="160" cy="264" rx="78" ry="16" fill="#170B05" fill-opacity="0.24"/>
+
+  <path d="M103 116L132 67L160 104L188 67L217 116V213C217 231.778 201.778 247 183 247H137C118.222 247 103 231.778 103 213V116Z" fill="url(#fur)"/>
+  <path d="M116 112L137 78L155 103L116 136V112Z" fill="url(#innerEar)"/>
+  <path d="M204 112L183 78L165 103L204 136V112Z" fill="url(#innerEar)"/>
+  <path d="M101 210C101 174.102 130.102 145 166 145V145C201.898 145 231 174.102 231 210V217C231 239.644 212.644 258 190 258H142C119.356 258 101 239.644 101 217V210Z" fill="url(#fur)"/>
+
+  <ellipse cx="137" cy="154" rx="16" ry="22" fill="url(#eye)"/>
+  <ellipse cx="183" cy="154" rx="16" ry="22" fill="url(#eye)"/>
+  <ellipse cx="137" cy="154" rx="3.2" ry="11" fill="#111111"/>
+  <ellipse cx="183" cy="154" rx="3.2" ry="11" fill="#111111"/>
+  <circle cx="132" cy="147" r="2.4" fill="#FFFCEB" fill-opacity="0.78"/>
+  <circle cx="178" cy="147" r="2.4" fill="#FFFCEB" fill-opacity="0.78"/>
+
+  <path d="M154 183C154 179.686 156.686 177 160 177C163.314 177 166 179.686 166 183V184.2C166 185.746 164.746 187 163.2 187H156.8C155.254 187 154 185.746 154 184.2V183Z" fill="#F0B095" fill-opacity="0.86"/>
+  <path d="M149.5 191.5C152.79 195.184 156.993 197 160 197C163.007 197 167.21 195.184 170.5 191.5" stroke="#F7EEDF" stroke-opacity="0.74" stroke-width="3" stroke-linecap="round"/>
+  <path d="M216 213C241.862 211.457 259 222.675 259 241.5C259 252.822 252.25 261.5 238.5 261.5C226.957 261.5 220 252.648 220 243C220 233.352 225.628 226 234.5 226" stroke="#1A0D05" stroke-width="16" stroke-linecap="round"/>
+
+  <circle cx="228" cy="103" r="28" fill="#FFF6E2"/>
+  <path d="M218 103.5H237" stroke="#6E4427" stroke-width="6" stroke-linecap="round"/>
+  <path d="M231 92L219 115" stroke="#6E4427" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="228" cy="103" r="24" stroke="#D59342" stroke-opacity="0.46" stroke-width="3"/>
+</svg>
