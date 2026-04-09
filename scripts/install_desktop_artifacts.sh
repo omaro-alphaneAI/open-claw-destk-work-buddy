@@ -48,7 +48,7 @@ fi
 
 mkdir -p "${INSTALL_ROOT}" "${DESKTOP_DIR}"
 rm -rf "${INSTALLED_APP}"
-cp -R "${SOURCE_APP}" "${INSTALLED_APP}"
+/usr/bin/ditto "${SOURCE_APP}" "${INSTALLED_APP}"
 rm -rf \
   "${DESKTOP_TOGGLE_APP}" \
   "${FALLBACK_TOGGLE_SCRIPT}" \
@@ -57,17 +57,15 @@ rm -rf \
   "${LEGACY_TOGGLE_APP}"
 
 if command -v osacompile >/dev/null 2>&1; then
-  osacompile -o "${DESKTOP_TOGGLE_APP}" <<EOF
-set appPath to "${INSTALLED_APP}"
-set procKey to "${PROC_KEY}"
-set runningCode to do shell script "/usr/bin/pgrep -f " & quoted form of procKey & " >/dev/null 2>&1; echo $?"
-
-if runningCode is "0" then
-  do shell script "/usr/bin/pkill -f " & quoted form of procKey & " >/dev/null 2>&1 || true"
-else
-  do shell script "/usr/bin/open " & quoted form of appPath
-end if
-EOF
+  osacompile -o "${DESKTOP_TOGGLE_APP}" \
+    -e "set appPath to \"${INSTALLED_APP}\"" \
+    -e "set procKey to \"${PROC_KEY}\"" \
+    -e "try" \
+    -e "  do shell script \"/usr/bin/pgrep -f \" & quoted form of procKey" \
+    -e "  do shell script \"/usr/bin/pkill -f \" & quoted form of procKey & \" >/dev/null 2>&1 || true\"" \
+    -e "on error" \
+    -e "  do shell script \"/usr/bin/open \" & quoted form of appPath" \
+    -e "end try"
 else
   cat > "${FALLBACK_TOGGLE_SCRIPT}" <<EOF
 #!/bin/zsh
