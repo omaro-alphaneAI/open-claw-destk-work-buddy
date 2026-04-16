@@ -335,21 +335,21 @@ img {
 
 .pet-shell[data-avatar="kuribou"] .pet-rig {
   width: 138px;
-  height: 138px;
+  height: 148px;
   bottom: 4px;
   transform-origin: 50% 95%;
 }
 
 .pet-shell[data-mini="true"][data-avatar="kuribou"] .pet-rig {
   width: 106px;
-  height: 106px;
+  height: 114px;
   bottom: 4px;
   transform-origin: 50% 95%;
 }
 
 .pet-shell[data-avatar="kuribou"][data-eco="true"] .pet-rig {
   width: 120px;
-  height: 120px;
+  height: 128px;
   bottom: 5px;
   transform-origin: 50% 95%;
 }
@@ -606,6 +606,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center top;
   image-rendering: auto;
   will-change: transform;
 }
